@@ -88,4 +88,4 @@ This plugin is distributed under the Apache license version 2.0; you can use thi
 
 ### How to Contribute:
 
-Suggest your ideas, write code!
+Suggest your ideas!
