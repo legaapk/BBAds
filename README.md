@@ -84,7 +84,7 @@ regex: # List of words and phrases that cannot be used
 
 ### License:
 
-Use this plugin as you wish (MIT License).
+This plugin is distributed under the Apache license version 2.0; you can use this file only in accordance with the License.
 
 ### How to Contribute:
 
