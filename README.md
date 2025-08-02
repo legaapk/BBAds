@@ -1,109 +1,91 @@
-## bBAds - BossBar Advertisement Plugin for Minecraft
+## bBAds - Making Some Noise in the BossBar! 😎
 
-bBAds is a powerful and configurable Minecraft plugin that allows server owners to display advertisements, announcements, and custom messages via the BossBar. This plugin provides a flexible way to communicate with players, promote server features, and even allow players to create their own advertisements (with appropriate permissions and restrictions).
+Basically, this is a Minecraft plugin so your players don't get bored! It lets you display all sorts of cool stuff in the BossBar, so everyone can see it.
 
-### Features
+### What's in the Box:
 
-•   Server Advertisements:
-    *   Display a rotating list of server-defined messages in the BossBar.
-    *   Configurable interval between advertisements.
-    *   Color code support for visually appealing messages.
-•   Player Advertisements:
-    *   Allows players to create and display their own custom messages in the BossBar (requires permission).
-    *   Configurable duration for player advertisements.
-    *   BossBar color selection for player advertisements.
-    *   Message color selection for player advertisements
-    *   Customizable message format (e.g., [PlayerName]: Message).
-    *   Queue system for player advertisements.
-•   Admin Control:
-    *   Enable/disable server advertisements.
-    *   Stop all active BossBars immediately.
-    *   Mute players from sending advertisements (with configurable duration).
-    *   Reload configuration without server restart.
-•   Permissions System:
-    *   Granular control over who can use the plugin and for how long they can display their advertisements.
-•   Mute System:
-    *   Prevent players from abusing the system by muting them.
-    *   Configurable mute durations.
-•   Regex Filtering:
-    *   Prevent unwanted or inappropriate content with a configurable list of regular expressions and words.
-•   Logging:
-    *   Log all displayed advertisements for moderation and tracking purposes.
-•   Configuration:
-    *   Highly configurable through config.yml and regex.yml.
+*   Server Ads: The plugin automatically rotates pre-written announcements. Write something awesome in config.yml, and everyone will see it!
+*   Player Ads: Let players show off! If they've got the permission, their message will appear in the BossBar. Control the duration so they don't abuse it.
+*   Admin Control: Enable/disable server ads, silence anyone who's spamming, and reload the config without restarting the server.
+*   Mutes: Silence those who write nonsense!
+*   Curse Filter: Don't let bad words through! Write them in regex.yml.
+*   Logs: Record all messages to a file, so you can figure out who wrote what later.
 
-### Commands
+### Commands (for Players):
 
-•   /bb <duration_seconds> <color_bb> <color_mssg> <message> -  Send a BossBar advertisement (requires bossbarads.use permission).
-    *   <duration_seconds>: The duration of the advertisement in seconds.
-    *   <color_bb>:  The color of the BossBar (e.g., BLUE, RED, GREEN).
-    *   <color_mssg>:  The color of the message text (e.g., AQUA, YELLOW).
-    *   <message>: The message to display.
-•   /bb mute <player> [seconds] - Mute a player from sending advertisements (requires bossbarads.admin permission). Defaults to 3600 seconds if no seconds are specified.
-•   /bb unmute <player> - Unmute a player (requires bossbarads.admin permission).
-•   /bossbarad <on|off|stop|reload> - Admin commands for managing server advertisements (requires bossbarads.admin permission).
-    *   on: Enable automatic server advertisements.
-    *   off: Disable automatic server advertisements.
-    *   stop: Stop all BossBars immediately.
-    *   reload: Reloads the configuration files (config.yml, regex.yml)
+*   /bb <time> <bossbar_color> <text_color> <message> - Sends your message to the BossBar!
+    *   <time>: How many seconds the message will be displayed.
+    *   <bossbar_color>: The BossBar color (e.g., BLUE, RED, GREEN).
+    *   <text_color>: The color of your message (e.g., AQUA, YELLOW).
+    *   <message>: The text you want to show.
 
-### Permissions
+    Example: /bb 10 RED YELLOW Check out my shop!
 
-•   bossbarads.use: Allows a player to use the /bb command to send advertisements.
-•   bossbarads.kd.15: Allows a player to send advertisements for up to 15 seconds.
-•   bossbarads.kd.30: Allows a player to send advertisements for up to 30 seconds.
-•   bossbarads.kd.60: Allows a player to send advertisements for up to 60 seconds.
-•   bossbarads.kd.120: Allows a player to send advertisements for up to 120 seconds.
-•   bossbarads.kd.unlimited: Allows a player to send advertisements for unlimited duration.
-•   bossbarads.admin: Allows access to admin commands (/bossbarad, /bb mute, /bb unmute).
+### Commands (for Admins):
 
-### Configuration
+*   /bb mute <player> [time] - Silences a player so they can't send messages. If you don't specify <time>, it will silence them forever (until you unmute them).
+*   /bb unmute <player> - Unmutes a player.
+*   /bossbarad <on|off|stop|reload> - Server Management!
+    *   on: Enables automatic server ads.
+    *   off: Disables server ads.
+    *   stop: Stops all BossBars right now!
+    *   reload: Reloads settings from the config.yml and regex.yml files.
 
-•   config.yml:  Configure general plugin settings, server advertisements, and intervals.
-    enable_logging: true # Enable logging of advertisements
-    alternate_ads: true  # Alternate between player and server ads
-    bossbar_id: "ads"      # Identifier for the bossbar
+### Permissions:
 
-    player_ads_interval:  # Minimum and maximum time between player ads
-      min: 15
-      max: 60
+*   bossbarads.use: Allows a player to use the /bb command.
+*   bossbarads.kd.15: Allows sending messages for 15 seconds.
+*   bossbarads.kd.30: Allows sending messages for 30 seconds.
+*   bossbarads.kd.60: Allows sending messages for 60 seconds.
+*   bossbarads.kd.120: Allows sending messages for 120 seconds.
+*   bossbarads.kd.unlimited: Allows sending messages with no time limit.
+*   bossbarads.admin: Gives access to admin commands.
 
-    server_ads_interval:  # Minimum and maximum time between server ads
-      min: 30
-      max: 60
+### Configuration (config.yml):
+enable_logging: true # Write logs or not
+alternate_ads: true  # Alternate between player and server ads
+bossbar_id: "ads"      # ID of the bossbar (better not to touch)
 
-    server_ads:           # List of server advertisements
-      - "&aWelcome to our server!"
-      - "&eJoin our Discord for rewards!"
+player_ads_interval:  # Time between player ads (in seconds)
+  min: 15
+  max: 60
 
-    muted_players:        # List of muted players
-      player1: 0           # Player1 is muted for 0 seconds (permanently until unmuted)
+server_ads_interval:  # Time between server ads (in seconds)
+  min: 30
+  max: 60
 
-    player_ad_format: "§7§o%name%§r: %message%" # Format for player advertisements
+server_ads:           # Write your advertising messages here
+  - "&aCome join us, it's fun here!"
+  - "&eSubscribe to our Discord!"
 
+muted_players:        # List of those who are silenced
+  player1: 0           # Player1 is silenced forever (until unmuted)
 
-    *  regex.yml: Define regular expressions or words to filter in player messages.
-        regex:
-      - "badword1"
-      - "badword2"
-      - ".*website\\.com.*"
+player_ad_format: "§7§o%name%§r: %message%" # How player ads look.
+                                           # %name% - player's name
+                                           # %message% - player's message
 
-### Installation
+### Curse Filter (regex.yml):
+regex: # List of words and phrases that cannot be used
+  - "bad_word1"
+  - "bad_word2"
+  - ".*website\\.com.*" # Ban websites
 
-1. Download the latest version of the bBAds plugin.
-2. Place the .jar file in the plugins folder of your Minecraft server.
-3. Start or restart the server.
-4. Edit the config.yml and regex.yml files in the plugins/bBAds folder to customize the plugin to your liking.
+### Installation:
 
-▌Dependencies
+1.  Download the .jar file of the plugin.
+2.  Drop it into the plugins folder on your Minecraft server.
+3.  Start the server.
+4.  Customize the config.yml and regex.yml files to your liking.
 
-•  Spigot or Paper (or a compatible Bukkit/Spigot server implementation)
+### Dependencies:
 
-▌License
+*   Spigot or Paper (or another server that supports Bukkit/Spigot plugins)
 
-This project is licensed under the [MIT License](LICENSE).
+### License:
 
-▌Contributing
+Use this plugin as you wish (MIT License).
 
-Contributions are welcome! Please feel free to submit pull requests or open issues.
+### How to Contribute:
 
+Suggest your ideas, write code!
