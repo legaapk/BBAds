@@ -1,0 +1,4 @@
+regex:
+  - "badword1"
+  - "badword2"
+  - ".*website\\.com.*"

@@ -1,0 +1,28 @@
+name: bBAds
+version: 1.0
+main: tg.legaapk.bBAds.bBAds
+api-version: 1.21
+website: https://github.com/legaapk?tab=repositories
+description: bBAds — BossBar Advertisement Plugin for Minecraft
+commands:
+  bb:
+    description: Send a BossBar advertisement
+    usage: /bb <duration> <color_bb> <color_mssg> <message> | /bb mute <player> [seconds] | /bb unmute <player>
+  bossbarad:
+    description: Admin commands for automatic server ads
+    usage: /bossbarad <on|off|stop|reload>
+permissions:
+  bossbarads.use:
+    default: true
+  bossbarads.kd.15:
+    default: true
+  bossbarads.kd.30:
+    default: op
+  bossbarads.kd.60:
+    default: op
+  bossbarads.kd.120:
+    default: op
+  bossbarads.kd.unlimited:
+    default: op
+  bossbarads.admin:
+    default: op
